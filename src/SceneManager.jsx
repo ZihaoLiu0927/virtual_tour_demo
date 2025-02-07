@@ -44,9 +44,14 @@ function ClickHandler({ bgMeshRef, onHotspotCreate }) {
     }
   };
 
-  useFrame(() => {
-    gl.domElement.addEventListener('click', handleClick);
-  });
+  useEffect(() => {
+    const canvas = gl.domElement;
+    canvas.addEventListener('click', handleClick);
+    // 清理函数，组件卸载时移除事件监听器
+    return () => {
+      canvas.removeEventListener('click', handleClick);
+    };
+  }, [gl.domElement, camera]);
 
   return null;
 }

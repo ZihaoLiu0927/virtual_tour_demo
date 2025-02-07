@@ -11,80 +11,64 @@
         {
           "type": "scene",
           "sceneId": 3,
-          "left": 731,
-          "top": 371,
+          "position": [-642, -93, -467],
           "text": "2th Floor"
         },
         {
           "type": "info",
-          "left": 557,
-          "top": 545,
+          "position": [-661, -276, 353],
           "text": "Sofa"
         },
         {
           "type": "info",
-          "left": 233,
-          "top": 495,
+          "position": [-771, -121, -172],
           "text": "Desk"
         },
         {
           "type": "title",
-          "left": 821,
-          "top": 520,
-          "text": "Placeholder"
+          "position": [-463, -460, -461],
+          "text": "Precious Wood"
         }
       ]
     },
     {
       "sceneId": 2,
-      "title": "2th Floor",
+      "title": "Study Room",
       "panorama": "panorama/pano-2.jpeg",
       "hotSpots": [
         {
           "type": "scene",
-          "sceneId": 3,
-          "left": 720,
-          "top": 400,
-          "text": "Studay Room"
+          "sceneId": 1,
+          "position": [292, -77, 740],
+          "text": "Back to 1th Floor"
         },
         {
           "type": "title",
-          "left": 931,
-          "top": 410,
-          "text": "Room"
+          "position": [479, -640, -0.16],
+          "text": "Marble floor"
         }
       ]
     },
     {
       "sceneId": 3,
-      "title": "Studay Room",
+      "title": "2th Floor",
       "panorama": "panorama/pano-3.jpeg",
       "hotSpots": [
         {
           "type": "scene",
-          "sceneId": 1,
-          "left": 4150,
-          "top": 1120,
-          "text": "1th Floor"
-        },
-        {
-          "type": "scene",
           "sceneId": 2,
-          "left": 3350,
-          "top": 1180,
-          "text": "Bedroom"
+          "position": [-688, 70, -400],
+          "text": "Study Room"
         },
         {
           "type": "info",
-          "left": 230,
-          "top": 1200,
-          "text": "Orang ini lagi nunggu ojol"
+          "position": [108, 183, 770],
+          "text": "Famous Building"
         },
         {
           "type": "title",
-          "left": 1500,
-          "top": 1000,
-          "text": "Placeholder"
+          "position": [128, -287, -735],
+          "text": "Secret Room"
         }
       ]
     }

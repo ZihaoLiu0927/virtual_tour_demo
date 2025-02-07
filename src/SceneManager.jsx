@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Canvas, useThree, useLoader } from '@react-three/fiber';
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
+import { Canvas, useThree, useLoader, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import HotSpotScene from './components/HotSpotScene';
 import HotSpotTitle from './components/HotSpotTitle';
@@ -7,24 +7,55 @@ import HotSpotInfo from './components/HotspotInfo';
 import { OrbitControls } from '@react-three/drei';
 
 // A helper component that loads a panorama texture and sets it as the scene background.
-function Background({ panorama }) {
+const Background = forwardRef(({ panorama }, ref) => {
   const texture = useLoader(THREE.TextureLoader, panorama);
-  
+  const meshRef = useRef();
+
+  useImperativeHandle(ref, () => meshRef.current);
+
   return (
-    <mesh>
+    <mesh ref={meshRef}>
       <sphereGeometry args={[800, 80, 60]} />
-      <meshBasicMaterial 
-        side={THREE.BackSide}
-        map={texture}
-      />
+      <meshBasicMaterial side={THREE.BackSide} map={texture} />
     </mesh>
   );
+});
+
+function ClickHandler({ bgMeshRef, onHotspotCreate }) {
+  const { camera, gl, scene } = useThree();
+  const raycaster = new THREE.Raycaster();
+  
+  const handleClick = (event) => {
+    // 计算鼠标标准化设备坐标
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / gl.domElement.clientWidth) * 2 - 1;
+    mouse.y = -(event.clientY / gl.domElement.clientHeight) * 2 + 1;
+    
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(bgMeshRef.current);
+    
+    if (intersects.length > 0) {
+      const point = intersects[0].point;  // 这是准确的 3D 坐标
+      onHotspotCreate({
+        type: "info",
+        position: [point.x, point.y, point.z],
+        text: "New Hotspot"
+      });
+    }
+  };
+
+  useFrame(() => {
+    gl.domElement.addEventListener('click', handleClick);
+  });
+
+  return null;
 }
 
 export default function SceneManager({ firstSceneId, scenes }) {
   const [currentSceneId, setCurrentSceneId] = useState(firstSceneId);
   const [isDevMode, setIsDevMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const bgMeshRef = useRef();
 
   // Find a scene by its ID.
   const getSceneById = (sceneId) => scenes.find((scene) => scene.sceneId === sceneId);
@@ -33,6 +64,10 @@ export default function SceneManager({ firstSceneId, scenes }) {
   // Handle scene navigation when a "scene" type hotspot is clicked.
   const handleHotSpotSceneClick = (sceneToGo) => {
     setCurrentSceneId(sceneToGo.sceneId);
+  };
+
+  const handleHotspotCreate = (hotspot) => {
+    console.log('创建热点数据：', hotspot);
   };
 
   // Convert 2D screen coordinates to 3D world coordinates
@@ -55,7 +90,9 @@ export default function SceneManager({ firstSceneId, scenes }) {
   const renderHotSpots = (hotSpots = []) =>
     hotSpots.map((hotSpot, i) => {
       // Convert screen coordinates to world coordinates
-      const position = screenToWorld(hotSpot.left, hotSpot.top);
+      const position = hotSpot.position 
+      ? hotSpot.position 
+      : screenToWorld(hotSpot.left, hotSpot.top);
 
       switch (hotSpot.type) {
         case 'scene': {
@@ -92,25 +129,6 @@ export default function SceneManager({ firstSceneId, scenes }) {
       }
     });
 
-  // 添加点击处理函数
-  const handleCanvasClick = (event) => {
-    // 获取点击位置相对于窗口的坐标
-    const left = event.clientX;
-    const top = event.clientY;
-    
-    console.log('Clicked at:', { 
-      left, 
-      top,
-      // 为tour.json格式化输出
-      hotSpot: {
-        type: "info",
-        left: left,
-        top: top,
-        text: "New Hotspot"
-      }
-    });
-  };
-
   const handleMouseMove = (event) => {
     if (!isDevMode) return;
     
@@ -137,7 +155,6 @@ export default function SceneManager({ firstSceneId, scenes }) {
   return (
     <div 
       style={{ width: '100vw', height: '100vh' }}
-      onClick={handleCanvasClick}  // 添加点击监听
       onMouseMove={handleMouseMove}
     >
       <Canvas
@@ -148,7 +165,8 @@ export default function SceneManager({ firstSceneId, scenes }) {
           position: [2, 2, 0.1]
         }}
       >
-        <Background panorama={currentScene.panorama} />
+        <Background ref={bgMeshRef} panorama={currentScene.panorama} />
+        {isDevMode && <ClickHandler bgMeshRef={bgMeshRef} onHotspotCreate={handleHotspotCreate} />}
         <OrbitControls
           enableZoom={false}
           enablePan={false}
@@ -160,7 +178,6 @@ export default function SceneManager({ firstSceneId, scenes }) {
         {renderHotSpots(currentScene.hotSpots)}
       </Canvas>
 
-      {/* 开发模式UI */}
       {isDevMode && (
         <div style={{
           position: 'fixed',

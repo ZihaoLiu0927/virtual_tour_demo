@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Html } from '@react-three/drei';
 
-const HotSpotInfo = ({ left, top, text, position }) => {
+const HotSpotInfo = ({ text, position }) => {
   // 控制信息卡片的显示状态
   const [hovered, setHovered] = useState(false);
 
-  // 若外部传入了 position，则直接使用，否则使用 left 与 top（这要求 left、top 已经转换为 3D 坐标）
-  const pos = position || [left, top, 0];
+  const pos = position;
 
   // 图标样式：大小、鼠标样式等
   const iconStyle = {

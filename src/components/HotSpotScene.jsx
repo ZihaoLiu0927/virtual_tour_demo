@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Html } from '@react-three/drei';
 
-export default function HotSpotScene({ left, top, text, onClick, position }) {
+export default function HotSpotScene({ text, onClick, position }) {
   const [hovered, setHovered] = useState(false);
 
-  // 使用提供的3D位置或者回退到 [left, top, 0]
-  const pos = position || [left, top, 0];
+  const pos = position;
 
   const boxStyle = {
     display: 'flex',

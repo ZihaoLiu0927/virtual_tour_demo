@@ -1,0 +1,92 @@
+{
+  "default": {
+    "firstSceneId": 1
+  },
+  "scenes": [
+    {
+      "sceneId": 1,
+      "title": "Living Room",
+      "panorama": "panorama/pano-1.jpeg",
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": 3,
+          "left": 731,
+          "top": 371,
+          "text": "2th Floor"
+        },
+        {
+          "type": "info",
+          "left": 557,
+          "top": 545,
+          "text": "Sofa"
+        },
+        {
+          "type": "info",
+          "left": 233,
+          "top": 495,
+          "text": "Desk"
+        },
+        {
+          "type": "title",
+          "left": 821,
+          "top": 520,
+          "text": "Placeholder"
+        }
+      ]
+    },
+    {
+      "sceneId": 2,
+      "title": "2th Floor",
+      "panorama": "panorama/pano-2.jpeg",
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": 3,
+          "left": 720,
+          "top": 400,
+          "text": "Studay Room"
+        },
+        {
+          "type": "title",
+          "left": 931,
+          "top": 410,
+          "text": "Room"
+        }
+      ]
+    },
+    {
+      "sceneId": 3,
+      "title": "Studay Room",
+      "panorama": "panorama/pano-3.jpeg",
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": 1,
+          "left": 4150,
+          "top": 1120,
+          "text": "1th Floor"
+        },
+        {
+          "type": "scene",
+          "sceneId": 2,
+          "left": 3350,
+          "top": 1180,
+          "text": "Bedroom"
+        },
+        {
+          "type": "info",
+          "left": 230,
+          "top": 1200,
+          "text": "Orang ini lagi nunggu ojol"
+        },
+        {
+          "type": "title",
+          "left": 1500,
+          "top": 1000,
+          "text": "Placeholder"
+        }
+      ]
+    }
+  ]
+}

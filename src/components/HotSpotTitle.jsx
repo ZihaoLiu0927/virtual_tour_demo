@@ -4,7 +4,6 @@ import { Html } from '@react-three/drei';
 const HotSpotTitle = ({ text, position }) => {
   const pos = position;
 
-  // 定义容器样式
   const containerStyle = {
     padding: '20px',
     backgroundColor: 'blue',
@@ -12,7 +11,6 @@ const HotSpotTitle = ({ text, position }) => {
     borderRadius: '8px',
   };
 
-  // 定义文字样式
   const textStyle = {
     fontSize: '30px',
     textAlign: 'center',

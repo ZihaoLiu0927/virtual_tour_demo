@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { Html } from '@react-three/drei';
 
 const HotSpotInfo = ({ text, position }) => {
-  // 控制信息卡片的显示状态
   const [hovered, setHovered] = useState(false);
 
   const pos = position;
 
-  // 图标样式：大小、鼠标样式等
   const iconStyle = {
     width: '32px',
     height: '32px',
     cursor: 'pointer'
   };
 
-  // 信息卡片样式：通过 CSS transition 实现淡入淡出
   const cardStyle = {
     padding: '10px',
     width: '300px',
@@ -24,17 +21,15 @@ const HotSpotInfo = ({ text, position }) => {
     transition: 'opacity 500ms ease',
     opacity: hovered ? 1 : 0,
     position: 'absolute',
-    top: '40px', // 信息卡片相对于图标的偏移，可根据需要调整
+    top: '40px',
     left: '0px'
   };
 
   return (
-    // Html 组件确保该热点位于 Canvas 中，但 pointerEvents 设置为 'none' 使得 Canvas 上其他区域可响应拖拽
     <Html position={pos} style={{ pointerEvents: 'none' }}>
-      {/* 外层 div 开启 pointerEvents，以保证内部的交互有效 */}
       <div style={{ pointerEvents: 'auto', position: 'relative', display: 'inline-block' }}>
         <img
-          src="/info.png" // 确保 info.png 文件在 public 目录中或根据你的项目配置引入图片
+          src="/info.png"
           alt="info icon"
           style={iconStyle}
           onMouseEnter={() => setHovered(true)}

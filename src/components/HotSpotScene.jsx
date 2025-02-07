@@ -25,9 +25,7 @@ export default function HotSpotScene({ text, onClick, position }) {
   };
 
   return (
-    // 设置外层Html的 pointerEvents 为 'none'
     <Html position={pos} style={{ pointerEvents: 'none' }}>
-      {/* 内层div设置 pointerEvents 为 'auto'，确保按钮本身可交互 */}
       <div
         style={{ pointerEvents: 'auto' }}
         onMouseEnter={() => setHovered(true)}

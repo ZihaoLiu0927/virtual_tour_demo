@@ -35,7 +35,7 @@ function ClickHandler({ bgMeshRef, onHotspotCreate }) {
     const intersects = raycaster.intersectObject(bgMeshRef.current);
     
     if (intersects.length > 0) {
-      const point = intersects[0].point;  // 这是准确的 3D 坐标
+      const point = intersects[0].point;  // precise 3D coordinate
       onHotspotCreate({
         type: "info",
         position: [point.x, point.y, point.z],
@@ -47,7 +47,7 @@ function ClickHandler({ bgMeshRef, onHotspotCreate }) {
   useEffect(() => {
     const canvas = gl.domElement;
     canvas.addEventListener('click', handleClick);
-    // 清理函数，组件卸载时移除事件监听器
+    // clean func，remove event listener when component unmount
     return () => {
       canvas.removeEventListener('click', handleClick);
     };
@@ -72,7 +72,7 @@ export default function SceneManager({ firstSceneId, scenes }) {
   };
 
   const handleHotspotCreate = (hotspot) => {
-    console.log('创建热点数据：', hotspot);
+    console.log('create hotspot data: ', hotspot);
   };
 
   // Convert 2D screen coordinates to 3D world coordinates
@@ -143,7 +143,7 @@ export default function SceneManager({ firstSceneId, scenes }) {
     });
   };
 
-  // 切换开发模式（按D键）
+  // press D to toggle dev mode
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'd' || event.key === 'D') {

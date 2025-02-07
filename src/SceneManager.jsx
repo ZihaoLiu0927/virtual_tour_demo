@@ -194,9 +194,9 @@ export default function SceneManager({ firstSceneId, scenes }) {
           borderRadius: 5,
           zIndex: 1000
         }}>
-          <p>开发模式</p>
-          <p>坐标: left={mousePos.x}, top={mousePos.y}</p>
-          <p>按D键退出</p>
+          <p>developer mode</p>
+          <p>Coordinate: left={mousePos.x}, top={mousePos.y}</p>
+          <p>Press D to exit</p>
         </div>
       )}
     </div>

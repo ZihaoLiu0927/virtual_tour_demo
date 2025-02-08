@@ -178,7 +178,6 @@ export default function SceneManager({ firstSceneId, scenes }) {
           rotateSpeed={-0.3}
           enableDamping
           dampingFactor={0.5}
-          reverseOrbit
         />
         {renderHotSpots(currentScene.hotSpots)}
       </Canvas>

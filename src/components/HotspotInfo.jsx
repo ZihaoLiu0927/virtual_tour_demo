@@ -29,7 +29,7 @@ const HotSpotInfo = ({ text, position }) => {
     <Html position={pos} style={{ pointerEvents: 'none' }}>
       <div style={{ pointerEvents: 'auto', position: 'relative', display: 'inline-block' }}>
         <img
-          src="/info.png"
+          src="info.png"
           alt="info icon"
           style={iconStyle}
           onMouseEnter={() => setHovered(true)}

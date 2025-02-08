@@ -26,7 +26,7 @@ function ClickHandler({ bgMeshRef, onHotspotCreate }) {
   const raycaster = new THREE.Raycaster();
   
   const handleClick = (event) => {
-    // 计算鼠标标准化设备坐标
+    // calculate mouse normalized device coordinates
     const mouse = new THREE.Vector2();
     mouse.x = (event.clientX / gl.domElement.clientWidth) * 2 - 1;
     mouse.y = -(event.clientY / gl.domElement.clientHeight) * 2 + 1;

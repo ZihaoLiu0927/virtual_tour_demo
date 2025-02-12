@@ -7,6 +7,10 @@
       "sceneId": 1,
       "title": "Living Room",
       "panorama": "panorama/sp1.jpeg",
+      "initialView": {
+        "position": [0, 0, 0.1],
+        "target": [40, 0, 0]
+      },
       "hotSpots": [
         {
           "type": "scene",
@@ -35,6 +39,10 @@
       "sceneId": 2,
       "title": "stairs",
       "panorama": "panorama/sp2.jpeg",
+      "initialView": {
+        "position": [0, 0, 0.1],
+        "target": [-40, 0, 0]
+      },
       "hotSpots": [
         {
           "type": "scene",
@@ -64,6 +72,10 @@
       "sceneId": 3,
       "title": "floor2",
       "panorama": "panorama/sp3.jpeg",
+      "initialView": {
+        "position": [0, 0, 0.1],
+        "target": [100, 0, 50]
+      },
       "hotSpots": [
         {
           "type": "scene",
@@ -88,6 +100,10 @@
       "sceneId": 4,
       "title": "bedroom",
       "panorama": "panorama/sp4.jpeg",
+      "initialView": {
+        "position": [0, 0, 0.1],
+        "target": [0, 0, -40]
+      },
       "hotSpots": [
         {
           "type": "scene",

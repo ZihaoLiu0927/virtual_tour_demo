@@ -61,6 +61,7 @@ export default function SceneManager({ firstSceneId, scenes }) {
   const [isDevMode, setIsDevMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const bgMeshRef = useRef();
+  const controlsRef = useRef();
 
   // Find a scene by its ID.
   const getSceneById = (sceneId) => scenes.find((scene) => scene.sceneId === sceneId);
@@ -69,6 +70,19 @@ export default function SceneManager({ firstSceneId, scenes }) {
   // Handle scene navigation when a "scene" type hotspot is clicked.
   const handleHotSpotSceneClick = (sceneToGo) => {
     setCurrentSceneId(sceneToGo.sceneId);
+    
+    // 获取目标场景的初始视角
+    const targetScene = scenes.find(scene => scene.sceneId === sceneToGo.sceneId);
+    if (targetScene.initialView && controlsRef.current) {
+      // 设置新的相机位置和目标点
+      controlsRef.current.object.position.set(
+        ...targetScene.initialView.position
+      );
+      controlsRef.current.target.set(
+        ...targetScene.initialView.target
+      );
+      controlsRef.current.update();
+    }
   };
 
   const handleHotspotCreate = (hotspot) => {
@@ -155,6 +169,15 @@ export default function SceneManager({ firstSceneId, scenes }) {
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, [isDevMode]);
 
+  // 默认视角配置
+  const defaultView = {
+    position: [0, 0, 0.1],
+    target: [0, 0, -1]
+  };
+
+  // 获取当前场景的视角配置
+  const currentView = currentScene?.initialView || defaultView;
+
   if (!currentScene) return null;
 
   return (
@@ -167,18 +190,19 @@ export default function SceneManager({ firstSceneId, scenes }) {
           fov: 75,
           near: 0.1,
           far: 1000,
-          position: [10, 0, 0.5]
+          position: currentView.position
         }}
       >
         <Background ref={bgMeshRef} panorama={currentScene.panorama} />
         {isDevMode && <ClickHandler bgMeshRef={bgMeshRef} onHotspotCreate={handleHotspotCreate} />}
         <OrbitControls
+          ref={controlsRef}
           enableZoom={false}
           enablePan={false}
           rotateSpeed={-0.3}
           enableDamping
           dampingFactor={0.5}
-          target={[0, 0, -1]}
+          target={new THREE.Vector3(...currentView.target)}
           minPolarAngle={Math.PI * 0.3}
           maxPolarAngle={Math.PI * 0.7}
         />

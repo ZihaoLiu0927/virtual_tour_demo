@@ -6,69 +6,94 @@
     {
       "sceneId": 1,
       "title": "Living Room",
-      "panorama": "panorama/pano-1.jpeg",
+      "panorama": "panorama/sp1.jpeg",
       "hotSpots": [
         {
           "type": "scene",
-          "sceneId": 3,
-          "position": [-642, -93, -467],
-          "text": "2th Floor"
+          "sceneId": 2,
+          "position": [425, -444, -510],
+          "text": ""
         },
         {
           "type": "info",
-          "position": [-661, -276, 353],
-          "text": "Sofa"
+          "position": [-786, 42, -140],
+          "text": "Mona Lisa"
         },
         {
           "type": "info",
-          "position": [-771, -121, -172],
-          "text": "Desk"
+          "position": [728, -51, 324],
+          "text": "Thermador Professional Series 36 Inch Wide 4 Burner Gas Rangetop with Griddle"
         },
         {
           "type": "title",
-          "position": [-463, -460, -461],
-          "text": "Precious Wood"
+          "position": [328, 53, -725],
+          "text": "Entrance"
         }
       ]
     },
     {
       "sceneId": 2,
-      "title": "Study Room",
-      "panorama": "panorama/pano-2.jpeg",
+      "title": "stairs",
+      "panorama": "panorama/sp2.jpeg",
       "hotSpots": [
         {
           "type": "scene",
+          "sceneId": 3,
+          "position": [-418, -62, 678],
+          "text": "2th floor"
+        },
+        {
+          "type": "scene",
           "sceneId": 1,
-          "position": [292, -77, 740],
-          "text": "Back to 1th Floor"
+          "position": [224, -378, 667],
+          "text": ""
         },
         {
           "type": "title",
           "position": [479, -640, -0.16],
           "text": "Marble floor"
+        },
+        {
+          "type": "info",
+          "position": [730, -61, -318],
+          "text": "Thermador Professional Series 36 Inch Wide 4 Burner Gas Rangetop with Griddle"
         }
       ]
     },
     {
       "sceneId": 3,
-      "title": "2th Floor",
-      "panorama": "panorama/pano-3.jpeg",
+      "title": "floor2",
+      "panorama": "panorama/sp3.jpeg",
       "hotSpots": [
         {
           "type": "scene",
-          "sceneId": 2,
-          "position": [-688, 70, -400],
-          "text": "Study Room"
+          "sceneId": 4,
+          "position": [275, -114, 741],
+          "text": "bedroom"
+        },
+        {
+          "type": "scene",
+          "sceneId": 1,
+          "position": [405, -188, 663],
+          "text": "1th floor"
         },
         {
           "type": "info",
           "position": [108, 183, 770],
-          "text": "Famous Building"
-        },
+          "text": "Something"
+        }
+      ]
+    },
+    {
+      "sceneId": 4,
+      "title": "bedroom",
+      "panorama": "panorama/sp4.jpeg",
+      "hotSpots": [
         {
-          "type": "title",
-          "position": [128, -287, -735],
-          "text": "Secret Room"
+          "type": "scene",
+          "sceneId": 3,
+          "position": [-98, -394, -688],
+          "text": ""
         }
       ]
     }

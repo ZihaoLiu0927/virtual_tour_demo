@@ -164,10 +164,10 @@ export default function SceneManager({ firstSceneId, scenes }) {
     >
       <Canvas
         camera={{
-          fov: 85,
+          fov: 75,
           near: 0.1,
           far: 1000,
-          position: [2, 2, 0.1]
+          position: [10, 0, 0.5]
         }}
       >
         <Background ref={bgMeshRef} panorama={currentScene.panorama} />
@@ -178,6 +178,9 @@ export default function SceneManager({ firstSceneId, scenes }) {
           rotateSpeed={-0.3}
           enableDamping
           dampingFactor={0.5}
+          target={[0, 0, -1]}
+          minPolarAngle={Math.PI * 0.3}
+          maxPolarAngle={Math.PI * 0.7}
         />
         {renderHotSpots(currentScene.hotSpots)}
       </Canvas>
